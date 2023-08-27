@@ -1,2 +1,3 @@
-RABBITMQ_HOST = 'localhost'
+RABBITMQ_HOST = '52.6.98.238'
 QUEUE_NAME = 'my_queue'
+RABBITMQ_PORT = 15672
