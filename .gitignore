@@ -1,2 +1,5 @@
 telematics/
 .vscode/
+*.pyc
+microservicio_1/config/__pycache__/
+microservicio_2/config/__pycache__/
