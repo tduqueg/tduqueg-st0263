@@ -4,8 +4,7 @@ from generated import microservices_pb2, microservices_pb2_grpc
 
 app = Flask(__name__)
 
-# Dirección del servidor gRPC. Ajusta según tus necesidades.
-GRPC_SERVER = 'localhost:50051'
+GRPC_SERVER = '54.237.135.137:50051'
 
 
 @app.route('/list_files', methods=['GET'])
