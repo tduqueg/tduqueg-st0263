@@ -1,4 +1,4 @@
-# info de la materia: STxxxx <Nombre de la Materia>
+# info de la materia: ST0263 <Nombre de la Materia>
 
 Estudiante(s): Tomás Duque Giraldo, tduqueg@eafit.edu.co
 
