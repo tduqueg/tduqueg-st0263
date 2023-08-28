@@ -1,84 +1,90 @@
-# Proyecto Telemática: Microservicios con MOM
+# info de la materia: STxxxx <Nombre de la Materia>
 
-## Descripción
+Estudiante(s): Tomás Duque Giraldo, tduqueg@eafit.edu.co
 
-Este proyecto integra un conjunto de microservicios que tienen como función principal listar y buscar archivos dentro de directorios específicos. Se utiliza RabbitMQ como Middleware Orientado a Mensajes (MOM) para permitir la comunicación entre los servicios.
+Profesor: Edwin Montoya
 
-## Tabla de Contenidos
+# Sistema de Microservicios con RabbitMQ
 
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Funcionamiento](#funcionamiento)
-- [Pre-requisitos](#pre-requisitos)
-- [Instalación y Ejecución](#instalación-y-ejecución)
-- [Notas Adicionales](#notas-adicionales)
+1. **Breve Descripción de la Actividad**
 
-## Estructura del Proyecto
+Este proyecto implementa un sistema de microservicios con RabbitMQ. A través de una interfaz API principal, los usuarios pueden solicitar listas de archivos y realizar búsquedas por nombre. Estas solicitudes se manejan en microservicios que se comunican mediante RabbitMQ para la orquestación de tareas.
 
-### Carpetas y Archivos
+## 1.1. Que aspectos cumplió o desarrolló de la actividad propuesta por el profesor (requerimientos funcionales y no funcionales)
 
-#### `api`
+- Implementación de una API con Flask.
+- Uso de microservicios para separar la lógica de listar y buscar archivos.
+- Integración con RabbitMQ para gestionar las comunicaciones entre microservicios.
+- Diseño modular y organizado.
 
-Contiene el servidor principal que se encarga de gestionar las peticiones y comunicarse con los microservicios.
+## 1.2. Que aspectos NO cumplió o desarrolló de la actividad propuesta por el profesor (requerimientos funcionales y no funcionales)
 
-- `app.py`: Archivo que define las rutas y maneja la comunicación con los microservicios.
+# 2. Información general de diseño de alto nivel, arquitectura, patrones, mejores prácticas utilizadas.
 
-#### `microservicio_1`
+Se implementó una arquitectura de microservicios utilizando Flask y gRPC para la comunicación. RabbitMQ se utiliza como mediador para la comunicación entre servicios. La estructura del proyecto está organizada modularmente, separando configuraciones, servicios y la lógica principal en diferentes carpetas y archivos.
 
-Se encarga de listar los archivos de un directorio determinado.
+# 3. Descripción del ambiente de desarrollo y técnico: lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
 
-- `main.py`: Punto de entrada del microservicio.
-- `app/`
-  - `services.py`: Funciones que facilitan la lista de archivos.
+- Lenguaje: Python 3.9
+- Librerías:
+  - Flask (version)
+  - gRPC (version)
+  - RabbitMQ (version)
+  - Pika (version para RabbitMQ en Python)
 
-#### `microservicio_2`
+## Cómo se compila y ejecuta.
 
-Este microservicio tiene la capacidad de listar archivos y además buscarlos basados en un patrón dado.
+1. Instala las dependencias usando pip:
 
-- `main.py`: Punto de entrada y donde se inicia el listener de RabbitMQ.
-- `app/`
-  - `services.py`: Funciones para listar y buscar archivos.
+```bash
+pip install -r requirements.txt
+```
 
-#### `mom`
+2. Inicia RabbitMQ.
 
-Conjunto de lógicas relacionadas con la interacción de RabbitMQ.
+3. Lanza los microservicios y la API principal.
 
-- `message_service.py`: Funciones para la publicación y escucha de mensajes usando RabbitMQ.
+## Detalles técnicos
 
-## Funcionamiento
+Las direcciones IP para los servicios son:
 
-1. El servidor principal (`api`) hace solicitudes para listar o buscar archivos.
-2. Para buscar archivos, `api` publica un mensaje en RabbitMQ con el patrón de búsqueda deseado.
-3. `microservicio_2`, que actúa como un listener de RabbitMQ, detecta este mensaje, realiza la búsqueda y responde con los archivos correspondientes.
+- microservicio1: 3.227.195.79
+- microservicio2: 18.208.103.163
+- MOM (RabbitMQ): 52.6.98.238
+- gRPC: 54.237.135.137
 
-## Pre-requisitos
+La configuración, como IPs y puertos, se encuentra en el archivo de configuración dentro de cada componente.
 
-- Tener instalado Python 3.x.
-- RabbitMQ debe estar instalado y en funcionamiento.
+# 4. Descripción del ambiente de EJECUCIÓN (en producción) lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
 
-## Instalación y Ejecución
+<Replica lo que se mencionó en la sección 3 si el ambiente de producción es similar al de desarrollo>
 
-1. Asegúrate que RabbitMQ esté corriendo en tu sistema.
-2. Instala las dependencias con:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. inicia el `microservicio_1`:
-   ```bash
-   cd microservicio_1
-   python main.py
-   ```
-4. inicia el `microservicio_2`:
-   ```bash
-   cd microservicio_2
-   python main.py
-   ```
-5. finalmente, inicia el servidor principal:
-   ```bash
-   cd api
-   python app.py
-   ```
+# IP o nombres de dominio en nube o en la máquina servidor.
 
-# Notas Adicionales
+IPs:
 
-- Las configuraciones como la dirección IP, puertos de microservicios y RabbitMQ, entre otros, se encuentran en el archivo `config.py` de cada microservicio.
-- Si se va a desplegar en diferentes máquinas asegurese que las direcciones IP y puertos estén configurados correctamente.
+- microservicio1: 3.227.195.79
+- microservicio2: 18.208.103.163
+- MOM (RabbitMQ): 52.6.98.238
+- gRPC: 54.237.135.137
+
+## Descripción y cómo se configura los parámetros del proyecto
+
+La configuración de cada microservicio y de la API principal se encuentra en archivos de configuración dentro de sus respectivas carpetas. Aquí se pueden ajustar IPs, puertos y otros parámetros relevantes.
+
+## Cómo se lanza el servidor.
+
+1. Asegúrate de que RabbitMQ esté corriendo.
+2. Lanza cada microservicio y la API principal desde sus respectivos directorios.
+
+# 5. Otra información que considere relevante para esta actividad.
+
+N/A
+
+# Referencias:
+
+- RabbitMQ Official Documentation: https://www.rabbitmq.com/documentation.html
+- Flask Documentation: https://flask.palletsprojects.com/en/2.0.x/
+- gRPC Python Documentation: https://grpc.io/docs/languages/python/
+
+#### versión README.md -> 1.0 (2023-agosto)
