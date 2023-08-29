@@ -33,7 +33,7 @@ function sendToQueue(message) {
         console.error("No se pudo crear un canal", error1);
         return;
       }
-      const queue = "my_queue";
+      const queue = "my_app";
       channel.assertQueue(queue, {
         durable: true,
       });
