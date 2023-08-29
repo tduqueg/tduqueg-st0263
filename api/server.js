@@ -18,12 +18,12 @@ const serviceService = grpc.loadPackageDefinition(
   servicePackageDefinition
 ).FileService;
 const serviceClient = new serviceService(
-  `localhost:${serviceServicePORT}`,
+  `54.237.135.137:${serviceServicePORT}`,
   grpc.credentials.createInsecure()
 );
 
 function sendToQueue(message) {
-  amqp.connect("amqp://user:password@localhost", (error0, connection) => {
+  amqp.connect("amqp://user:password@52.6.98.238", (error0, connection) => {
     if (error0) {
       console.error("Fallo la conección con el conejoMQ", error0);
       return;
