@@ -57,8 +57,6 @@ gRPC: 50051
 
 # 4. Descripción del ambiente de EJECUCIÓN (en producción) lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
 
-<Replica lo que se mencionó en la sección 3 si el ambiente de producción es similar al de desarrollo>
-
 - Lenguaje: Nodejs
 - Librerías:
   - express (version)
@@ -99,7 +97,7 @@ IPs:
 
 ## Descripción y cómo se configura los parámetros del proyecto
 
-<Describa los parámetros de configuración del proyecto>
+Se debe configurar el archivo server.js con las direcciones IP de los servicios y además colocar los puertos que desee utilizar y las credenciales de RabbitMQ.
 
 ## Cómo se lanza el servidor.
 
