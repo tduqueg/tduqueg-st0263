@@ -61,7 +61,7 @@ app.get("/search", (req, res) => {
   serviceClient.SearchFiles({ name: req.query.name }, (error, response) => {
     if (error) {
       console.error("Error al buscar el archivo", error);
-      let message = "Search" + req.query.name;
+      let message = "Search/" + req.query.name;
       console.log(message);
       sendToQueue(message);
       res
@@ -69,7 +69,7 @@ app.get("/search", (req, res) => {
         .send("Error llamando el microservicio, pasamos con el conejoMQ");
       return;
     }
-    res.json(response.SearchResponse);
+    res.json(response.searchResponse);
   });
 });
 
