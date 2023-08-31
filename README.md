@@ -42,6 +42,18 @@ sudo docker start rabbit-server
 
 2. Lanza los microservicios y la API principal.
 
+3. Por medio de un buscador o postman colocar la dirección IP de la API y el puerto 80, luego colocar la ruta /list y se obtendrá la lista de archivos de la siguiente forma
+
+```bash
+http://<IP_DE_LA_API>:80/list
+```
+
+o si en su defecto deseas buscar un archivo en especifico se debe colocar la ruta /search y se debe colocar el nombre del archivo que se desea buscar de la siguiente forma
+
+```bash
+http://<IP_DE_LA_API>:80/search?name=<NOMBRE_DEL_ARCHIVO>
+```
+
 ## Detalles técnicos
 
 Las direcciones IP para los servicios son:
